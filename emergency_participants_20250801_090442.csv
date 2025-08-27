@@ -1,0 +1,20 @@
+id,condition,age,profession,completed,assigned_at,created_at
+1,Control,10,Resident,1,2025-07-21 15:53:16,2025-07-21 15:53:16
+2,Group A - Warning Label,10,Attending Physician,1,2025-07-21 15:54:22,2025-07-21 15:54:22
+3,Control,10,Attending Physician,1,2025-07-21 15:54:31,2025-07-21 15:54:31
+4,Group A - Warning Label,10,Medical Student,1,2025-07-21 15:59:05,2025-07-21 15:59:05
+5,Control,10,Medical Student,0,2025-07-21 16:19:28,2025-07-21 16:19:28
+6,Group A - Warning Label,10,Medical Student,1,2025-07-21 16:25:26,2025-07-21 16:25:26
+7,Control,10,Medical Student,1,2025-07-21 16:28:55,2025-07-21 16:28:55
+8,Group A - Warning Label,10,Attending Physician,1,2025-07-21 16:41:42,2025-07-21 16:41:42
+9,Control,10,Resident,1,2025-07-22 10:33:47,2025-07-22 10:33:47
+10,Group A - Warning Label,10,Resident,1,2025-07-22 11:36:36,2025-07-22 11:36:36
+11,Control,10,Nurse,1,2025-07-25 11:28:16,2025-07-25 11:28:16
+12,Group A - Warning Label,10,Medical Student,0,2025-07-28 13:06:28,2025-07-28 13:06:28
+13,Control,10,Medical Student,0,2025-07-28 13:09:28,2025-07-28 13:09:28
+14,Group A - Warning Label,10,Medical Student,0,2025-07-28 13:13:37,2025-07-28 13:13:37
+15,Control,11,Medical Student,0,2025-07-28 13:14:27,2025-07-28 13:14:27
+16,Group A - Warning Label,10,Non-Healthcare Professional: theophilus,0,2025-08-01 12:46:32,2025-08-01 12:46:32
+17,Control,10,Resident,0,2025-08-01 12:48:02,2025-08-01 12:48:02
+18,Group A - Warning Label,10,Medical Student,0,2025-08-01 12:48:25,2025-08-01 12:48:25
+19,Control,10,Resident,0,2025-08-01 13:02:27,2025-08-01 13:02:27

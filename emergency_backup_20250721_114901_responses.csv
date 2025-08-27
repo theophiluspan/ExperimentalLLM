@@ -1,0 +1,4 @@
+id,participant_id,case_id,response_number,group_condition,user_age,user_profession,agree_rating,trust_rating,comment,timestamp,created_at,participant_condition,submitted_at
+1,2,2,1,Group A - Warning Label,20,Attending Physician,4 Agree,1,,1753104389.156922,2025-07-21 13:26:29,Group A - Warning Label,2025-07-21 13:26:29
+4,2,2,2,Group A - Warning Label,20,Attending Physician,5 Strongly Agree,1,,1753104523.1170712,2025-07-21 13:28:43,Group A - Warning Label,2025-07-21 13:28:43
+6,2,2,3,Group A - Warning Label,20,Attending Physician,4 Agree,1,,1753105074.177974,2025-07-21 13:37:54,Group A - Warning Label,2025-07-21 13:37:54

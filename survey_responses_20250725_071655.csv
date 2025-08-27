@@ -1,0 +1,32 @@
+id,participant_id,case_id,response_number,group_condition,user_age,user_profession,agree_rating,trust_rating,comment,timestamp,created_at,participant_condition,submitted_at
+1,1,2,1,Control,10,Resident,4 Agree,1,,1753113228.3555572,2025-07-21 15:53:48,Control,2025-07-21 15:53:48
+2,1,2,2,Control,10,Resident,2 Disagree,1,Theo,1753113242.121526,2025-07-21 15:54:02,Control,2025-07-21 15:54:02
+3,1,2,3,Control,10,Resident,2 Disagree,1,theo,1753113256.3715498,2025-07-21 15:54:16,Control,2025-07-21 15:54:16
+5,2,2,1,Group A - Warning Label,10,Attending Physician,1 Strongly Disagree,0,,1753113340.294847,2025-07-21 15:55:40,Group A - Warning Label,2025-07-21 15:55:40
+6,2,2,2,Group A - Warning Label,10,Attending Physician,1 Strongly Disagree,1,,1753113352.202854,2025-07-21 15:55:52,Group A - Warning Label,2025-07-21 15:55:52
+8,2,2,3,Group A - Warning Label,10,Attending Physician,2 Disagree,0,,1753113372.3566039,2025-07-21 15:56:12,Group A - Warning Label,2025-07-21 15:56:12
+4,3,2,1,Control,10,Attending Physician,2 Disagree,1,,1753113336.5500228,2025-07-21 15:55:36,Control,2025-07-21 15:55:36
+7,3,2,2,Control,10,Attending Physician,3 Neutral,1,,1753113357.143373,2025-07-21 15:55:57,Control,2025-07-21 15:55:57
+9,3,2,3,Control,10,Attending Physician,1 Strongly Disagree,1,,1753113375.857214,2025-07-21 15:56:15,Control,2025-07-21 15:56:15
+10,4,2,1,Group A - Warning Label,10,Medical Student,3 Neutral,1,,1753113659.877564,2025-07-21 16:00:59,Group A - Warning Label,2025-07-21 16:00:59
+11,4,2,2,Group A - Warning Label,10,Medical Student,3 Neutral,1,no,1753113916.807092,2025-07-21 16:05:16,Group A - Warning Label,2025-07-21 16:05:16
+12,4,2,3,Group A - Warning Label,10,Medical Student,1 Strongly Disagree,1,,1753113932.057176,2025-07-21 16:05:32,Group A - Warning Label,2025-07-21 16:05:32
+13,5,1,1,Control,10,Medical Student,1 Strongly Disagree,0,,1753114810.068075,2025-07-21 16:20:10,Control,2025-07-21 16:20:10
+14,6,1,1,Group A - Warning Label,10,Medical Student,1 Strongly Disagree,0,,1753115168.105189,2025-07-21 16:26:08,Group A - Warning Label,2025-07-21 16:26:08
+15,6,2,2,Group A - Warning Label,10,Medical Student,2 Disagree,1,,1753115180.794566,2025-07-21 16:26:20,Group A - Warning Label,2025-07-21 16:26:20
+16,6,3,3,Group A - Warning Label,10,Medical Student,2 Disagree,1,,1753115192.1198158,2025-07-21 16:26:32,Group A - Warning Label,2025-07-21 16:26:32
+17,7,1,1,Control,10,Medical Student,2 Disagree,1,"th
+",1753115381.383518,2025-07-21 16:29:41,Control,2025-07-21 16:29:41
+18,7,2,2,Control,10,Medical Student,2 Disagree,No,"
+th",1753115832.6380842,2025-07-21 16:37:12,Control,2025-07-21 16:37:12
+19,7,3,3,Control,10,Medical Student,4 Agree,Yes,"ttheot
+",1753116078.3188229,2025-07-21 16:41:18,Control,2025-07-21 16:41:18
+20,8,1,1,Group A - Warning Label,10,Attending Physician,1 Strongly Disagree,Yes,th,1753116135.436904,2025-07-21 16:42:15,Group A - Warning Label,2025-07-21 16:42:15
+21,8,2,2,Group A - Warning Label,10,Attending Physician,3 Neutral,Yes,th,1753116257.2346282,2025-07-21 16:44:17,Group A - Warning Label,2025-07-21 16:44:17
+22,8,3,3,Group A - Warning Label,10,Attending Physician,4 Agree,No,ho,1753128874.9054852,2025-07-21 20:14:34,Group A - Warning Label,2025-07-21 20:14:34
+23,9,1,1,Control,10,Resident,4 Agree,No,theo,1753182508.68523,2025-07-22 11:08:28,Control,2025-07-22 11:08:28
+24,9,2,2,Control,10,Resident,4 Agree,Yes,theo,1753182524.713581,2025-07-22 11:08:44,Control,2025-07-22 11:08:44
+25,9,3,3,Control,10,Resident,4 Agree,Yes,too biased,1753182541.103955,2025-07-22 11:09:01,Control,2025-07-22 11:09:01
+26,10,1,1,Group A - Warning Label,10,Resident,1 Strongly Disagree,Yes,h,1753216599.466142,2025-07-22 20:36:39,Group A - Warning Label,2025-07-22 20:36:39
+27,10,2,2,Group A - Warning Label,10,Resident,5 Strongly Agree,Yes,thero,1753216617.488564,2025-07-22 20:36:57,Group A - Warning Label,2025-07-22 20:36:57
+28,10,3,3,Group A - Warning Label,10,Resident,5 Strongly Agree,No,the,1753216632.0002959,2025-07-22 20:37:12,Group A - Warning Label,2025-07-22 20:37:12
