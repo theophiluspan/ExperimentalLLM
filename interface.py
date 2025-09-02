@@ -7,10 +7,7 @@ import pandas as pd
 # Import your database module
 from database import create_database, get_condition_assignment, save_survey_response
 
-# ―――――――――――――――――――――
-# CONFIGURATION - Response limit per participant (unchanged)
-# ―――――――――――――――――――――
-MAX_RESPONSES = 3  # Number of responses each participant provides
+
 
 # ―――――――――――――――――――――
 # 1. Dark Mode + ChatCSS (unchanged)
@@ -125,6 +122,11 @@ def load_cases():
         return json.load(f)
 
 cases = load_cases()
+
+# ―――――――――――――――――――――
+# CONFIGURATION - Response limit per participant (unchanged)
+# ―――――――――――――――――――――
+MAX_RESPONSES = len(cases)  # Number of responses each participant provides
 
 # ---------- Database Integration --------- 
 
