@@ -3,6 +3,7 @@ pandas
 numpy
 matplotlib
 scikit-learn
+scipy
 requests
 aiohttp
 huggingface-hub
@@ -13,4 +14,5 @@ torchvision
 tqdm
 regex
 PyYAML
+plotly
 typing_extensions
