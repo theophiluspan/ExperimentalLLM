@@ -1,7 +1,7 @@
-# admin_dashboard.py - SUPER OPTIMIZED VERSION
+# admin_dashboard.py - SUPER OPTIMIZED VERSION WITH PASSWORD PROTECTION
 """
-AI Survey Admin Dashboard - LIGHTNING FAST VERSION
-Run this separately from your main app with
+AI Survey Admin Dashboard - LIGHTNING FAST VERSION WITH SECURITY
+Run this separately from your main app with password protection
 """
 
 import streamlit as st
@@ -15,6 +15,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import math
 import time
+import hashlib
 
 # Page configuration
 st.set_page_config(
@@ -22,6 +23,107 @@ st.set_page_config(
     layout="wide",
     page_icon="📊"
 )
+
+# ==========================================
+# PASSWORD AUTHENTICATION
+# ==========================================
+
+# Admin password (in production, use environment variables or secure config)
+ADMIN_PASSWORD_HASH = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"  # "password" hashed
+# To generate a new hash: hashlib.sha256("your_password".encode()).hexdigest()
+
+def hash_password(password):
+    """Hash a password using SHA256"""
+    return hashlib.sha256(password.encode()).hexdigest()
+
+def check_password():
+    """Check if the user has entered the correct password"""
+    
+    # Initialize session state for authentication
+    if 'authenticated' not in st.session_state:
+        st.session_state.authenticated = False
+        st.session_state.password_attempts = 0
+        st.session_state.last_attempt_time = None
+    
+    # If already authenticated, return True
+    if st.session_state.authenticated:
+        return True
+    
+    # Check for rate limiting (max 5 attempts per 10 minutes)
+    if (st.session_state.password_attempts >= 5 and 
+        st.session_state.last_attempt_time and
+        datetime.now() - st.session_state.last_attempt_time < timedelta(minutes=10)):
+        
+        remaining_time = timedelta(minutes=10) - (datetime.now() - st.session_state.last_attempt_time)
+        st.error(f"🔒 Too many failed attempts. Try again in {remaining_time.seconds // 60} minutes.")
+        return False
+    
+    # Show login form
+    st.markdown("""
+        <div style="max-width: 400px; margin: 0 auto; padding: 2rem; background: #f8f9fa; border-radius: 10px; margin-top: 2rem;">
+            <h2 style="text-align: center; color: #1f77b4;">🔐 Admin Access</h2>
+            <p style="text-align: center; color: #666;">Enter the admin password to access the dashboard</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Create centered columns for the login form
+    col1, col2, col3 = st.columns([1, 2, 1])
+    
+    with col2:
+        # Password input
+        password = st.text_input(
+            "Password:",
+            type="password",
+            placeholder="Enter admin password",
+            key="password_input"
+        )
+        
+        # Login button
+        if st.button("🔓 Login", type="primary", use_container_width=True):
+            if password:
+                if hash_password(password) == ADMIN_PASSWORD_HASH:
+                    st.session_state.authenticated = True
+                    st.session_state.password_attempts = 0
+                    st.success("✅ Access granted! Redirecting...")
+                    time.sleep(1)
+                    st.rerun()
+                else:
+                    st.session_state.password_attempts += 1
+                    st.session_state.last_attempt_time = datetime.now()
+                    st.error(f"❌ Invalid password. Attempt {st.session_state.password_attempts}/5")
+            else:
+                st.warning("⚠️ Please enter a password")
+        
+        # Show attempt counter if there have been failed attempts
+        if st.session_state.password_attempts > 0:
+            st.caption(f"Failed attempts: {st.session_state.password_attempts}/5")
+    
+    # Instructions for first-time users
+    st.markdown("---")
+    st.markdown("""
+        <div style="text-align: center; color: #666; font-size: 14px;">
+            <p><strong>Default Password:</strong> password</p>
+            <p><em>Change this in the code by updating ADMIN_PASSWORD_HASH</em></p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    return False
+
+# Authentication check - stop here if not authenticated
+if not check_password():
+    st.stop()
+
+# Add logout option in sidebar after authentication
+with st.sidebar:
+    st.markdown("---")
+    if st.button("🚪 Logout"):
+        st.session_state.authenticated = False
+        st.session_state.password_attempts = 0
+        st.rerun()
+    
+    # Show authenticated user info
+    st.success("🔓 Authenticated")
+    st.caption(f"Session: {datetime.now().strftime('%H:%M:%S')}")
 
 # ==========================================
 # SUPER AGGRESSIVE CACHING
@@ -105,7 +207,7 @@ st.markdown("""
 st.markdown("""
     <div class="main-header">
         <h1>📊 AI Survey Admin Dashboard</h1>
-        <p>Lightning Fast Performance</p>
+        <p>Lightning Fast Performance - Secure Access</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1018,7 +1120,7 @@ if 'stats_timestamp' in st.session_state.cache_timestamps:
 
 st.markdown(f"""
     <div style="text-align: center; color: #666; padding: 1rem; font-size: 12px;">
-        📊 Super Optimized Dashboard | Cache: {cache_age} | Items: {len(st.session_state.cached_data)} | 
+        📊 Super Optimized Dashboard | 🔒 Secured Access | Cache: {cache_age} | Items: {len(st.session_state.cached_data)} | 
         {datetime.now().strftime("%H:%M:%S")}
     </div>
     """, unsafe_allow_html=True)
