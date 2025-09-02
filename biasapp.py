@@ -1,4 +1,4 @@
-# biasapp.py - Updated version with dynamic participant management
+# interface.py - Updated version with dynamic participant management
 import streamlit as st
 import json
 import time
