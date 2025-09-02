@@ -1,8 +1,7 @@
 # admin_dashboard.py - SUPER OPTIMIZED VERSION
 """
 AI Survey Admin Dashboard - LIGHTNING FAST VERSION
-Run this separately from your main app with:
-streamlit run admin_dashboard.py --server.port 8502
+Run this separately from your main app with
 """
 
 import streamlit as st
