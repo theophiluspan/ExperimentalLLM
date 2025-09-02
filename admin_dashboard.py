@@ -42,7 +42,6 @@ def check_password():
     # Initialize session state for authentication
     if 'authenticated' not in st.session_state:
         st.session_state.authenticated = False
-        st.session_state.password_attempts = 0
         st.session_state.last_attempt_time = None
     
     # If already authenticated, return True
@@ -83,21 +82,16 @@ def check_password():
             if password:
                 if hash_password(password) == ADMIN_PASSWORD_HASH:
                     st.session_state.authenticated = True
-                    st.session_state.password_attempts = 0
                     st.success("✅ Access granted! Redirecting...")
                     time.sleep(1)
                     st.rerun()
                 else:
-                    st.session_state.password_attempts += 1
                     st.session_state.last_attempt_time = datetime.now()
-                    st.error(f"❌ Invalid password. Attempt {st.session_state.password_attempts}/5")
+                    st.error(f"❌ Invalid password")
             else:
                 st.warning("⚠️ Please enter a password")
         
-        # Show attempt counter if there have been failed attempts
-        if st.session_state.password_attempts > 0:
-            st.caption(f"Failed attempts: {st.session_state.password_attempts}/5")
-    
+
     # Instructions for first-time users
     st.markdown("---")
     st.markdown("""
@@ -118,7 +112,6 @@ with st.sidebar:
     st.markdown("---")
     if st.button("🚪 Logout"):
         st.session_state.authenticated = False
-        st.session_state.password_attempts = 0
         st.rerun()
     
     # Show authenticated user info
