@@ -244,7 +244,7 @@ def display_instructions():
     <ul style="margin:4px 0 0 20px;padding-left:0;">
       <li><strong>No edits</strong> after you press <em>Submit&nbsp;&amp;&nbsp;Next</em>.</li>
       <li>Ratings and comments are <strong>mandatory</strong>.</li>
-      <li><strong>Note:</strong> Vignettes are all fictional and created for research purposes only.</li>
+      <li><strong>Note:</strong> Available vignettes decrease as you progress through the study.</li>
     </ul>
   </div>
 </div>
