@@ -48,15 +48,6 @@ def check_password():
     if st.session_state.authenticated:
         return True
     
-    # Check for rate limiting (max 5 attempts per 10 minutes)
-    if (st.session_state.password_attempts >= 5 and 
-        st.session_state.last_attempt_time and
-        datetime.now() - st.session_state.last_attempt_time < timedelta(minutes=10)):
-        
-        remaining_time = timedelta(minutes=10) - (datetime.now() - st.session_state.last_attempt_time)
-        st.error(f"🔒 Too many failed attempts. Try again in {remaining_time.seconds // 60} minutes.")
-        return False
-    
     # Show login form
     st.markdown("""
         <div style="max-width: 400px; margin: 0 auto; padding: 2rem; background: #f8f9fa; border-radius: 10px; margin-top: 2rem;">
