@@ -29,7 +29,7 @@ st.set_page_config(
 # ==========================================
 
 # Admin password (in production, use environment variables or secure config)
-ADMIN_PASSWORD_HASH = "plasticsurgeryadmin"  # "password" hashed
+ADMIN_PASSWORD_HASH = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"  # "password" hashed
 # To generate a new hash: hashlib.sha256("your_password".encode()).hexdigest()
 
 def hash_password(password):
@@ -42,11 +42,21 @@ def check_password():
     # Initialize session state for authentication
     if 'authenticated' not in st.session_state:
         st.session_state.authenticated = False
+        st.session_state.password_attempts = 0
         st.session_state.last_attempt_time = None
     
     # If already authenticated, return True
     if st.session_state.authenticated:
         return True
+    
+    # Check for rate limiting (max 5 attempts per 10 minutes)
+    if (st.session_state.password_attempts >= 5 and 
+        st.session_state.last_attempt_time and
+        datetime.now() - st.session_state.last_attempt_time < timedelta(minutes=10)):
+        
+        remaining_time = timedelta(minutes=10) - (datetime.now() - st.session_state.last_attempt_time)
+        st.error(f"🔒 Too many failed attempts. Try again in {remaining_time.seconds // 60} minutes.")
+        return False
     
     # Show login form
     st.markdown("""
@@ -73,21 +83,26 @@ def check_password():
             if password:
                 if hash_password(password) == ADMIN_PASSWORD_HASH:
                     st.session_state.authenticated = True
+                    st.session_state.password_attempts = 0
                     st.success("✅ Access granted! Redirecting...")
                     time.sleep(1)
                     st.rerun()
                 else:
+                    st.session_state.password_attempts += 1
                     st.session_state.last_attempt_time = datetime.now()
-                    st.error(f"❌ Invalid password")
+                    st.error(f"❌ Invalid password. Attempt {st.session_state.password_attempts}/5")
             else:
                 st.warning("⚠️ Please enter a password")
         
-
+        # Show attempt counter if there have been failed attempts
+        if st.session_state.password_attempts > 0:
+            st.caption(f"Failed attempts: {st.session_state.password_attempts}/5")
+    
     # Instructions for first-time users
     st.markdown("---")
     st.markdown("""
         <div style="text-align: center; color: #666; font-size: 14px;">
-            <p><strong>Default Password:</strong> password</p>
+            <p><strong>Admin Password:</strong> plasticsurgeryadmin</p>
             <p><em>Change this in the code by updating ADMIN_PASSWORD_HASH</em></p>
         </div>
         """, unsafe_allow_html=True)
@@ -103,6 +118,7 @@ with st.sidebar:
     st.markdown("---")
     if st.button("🚪 Logout"):
         st.session_state.authenticated = False
+        st.session_state.password_attempts = 0
         st.rerun()
     
     # Show authenticated user info
